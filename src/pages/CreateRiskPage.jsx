@@ -30,7 +30,8 @@ export default function CreateRiskPage() {
         description: values.description || undefined,
         status: values.status,
       })
-      const id = getId(res?.data || {})
+      const payload = res?.data?.data || res?.data?.content || res?.data || {}
+      const id = getId(payload)
       if (id) navigate(`/detail/${id}`)
       else navigate('/list')
     } catch (e) {

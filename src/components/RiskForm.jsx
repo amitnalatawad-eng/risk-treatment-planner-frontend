@@ -20,7 +20,10 @@ export default function RiskForm({
   const [values, setValues] = useState(defaultValues)
   const [errors, setErrors] = useState({})
 
-  useEffect(() => setValues(defaultValues), [defaultValues])
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setValues(defaultValues)
+  }, [defaultValues])
 
   function validate(nextValues) {
     const nextErrors = {}

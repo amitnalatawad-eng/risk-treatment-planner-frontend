@@ -33,12 +33,12 @@ export default function AiPanel({ riskId, risk }) {
         api.post('/recommend', payload),
       ])
 
-      const descData = describeRes?.data
+      const descData = describeRes?.data?.data || describeRes?.data?.content || describeRes?.data || {}
       const nextDescription =
         descData?.description || descData?.text || descData?.detail || descData
       setDescription(nextDescription ? String(nextDescription) : '')
 
-      const recData = recommendRes?.data
+      const recData = recommendRes?.data?.data || recommendRes?.data?.content || recommendRes?.data || {}
       const rawRecs =
         recData?.recommendations ||
         recData?.items ||

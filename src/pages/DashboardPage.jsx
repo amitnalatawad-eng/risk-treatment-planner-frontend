@@ -53,8 +53,7 @@ export default function DashboardPage() {
       try {
         const res = await api.get('/stats')
         if (!mounted) return
-        const payload =
-          res?.data?.data ?? res?.data?.content ?? res?.data ?? {}
+        const payload = res?.data?.data || res?.data?.content || res?.data || {}
         setStats(extractStats(payload))
       } catch (e) {
         if (!mounted) return

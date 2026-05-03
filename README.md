@@ -1,166 +1,139 @@
-# Risk Treatment Planner (Frontend)
+# 🛡️ Risk Treatment Planner
 
-## Overview
-A modern, AI-powered risk management web application built using React. This project demonstrates full-stack integration readiness with a **mock fallback** so the frontend remains fully functional even when the backend is unavailable.
+A modern, enterprise-grade, AI-powered risk management web application built using React. This project demonstrates full-stack integration readiness with a **robust mock fallback mechanism**, meaning the frontend remains fully functional, interactive, and demo-ready even when the backend is unavailable.
 
-## Developer
-**Amit Parashuram Nalatawad**  
-Full Stack Developer 3 (Frontend)
-Campuspe
+---
 
-## Tech Stack
-- React 18 (Vite)
-- Tailwind CSS
-- Axios
-- React Router DOM
-- Recharts
+## 📸 Screenshots
 
-## Key Features
+*(Add your screenshots here by placing images in a `/screenshots` folder and uncommenting the lines below)*
 
-### Authentication
-- Login with JWT token handling
-- Protected routes with access control
-- Mock login available when backend is down
+<!--
+| Dashboard Overview | Risk List & Filtering |
+| :---: | :---: |
+| ![Dashboard](./screenshots/dashboard.png) | ![Risk List](./screenshots/list.png) |
 
-### Risk Management (CRUD)
-- Create, view, update, and delete risks
-- Detailed risk view with status and metadata
-- Delete confirmation dialog
+| AI-Powered Details | Real-time Analytics |
+| :---: | :---: |
+| ![AI Detail](./screenshots/ai-detail.png) | ![Analytics](./screenshots/analytics.png) |
+-->
 
-### AI Integration (Mock + Ready)
-- AI panel in the Detail page
-- Calls backend endpoints:
-  - `POST /describe`
-  - `POST /recommend`
-- Works with mock AI responses when backend is unavailable
+---
 
-### Dashboard & Analytics
-- Dashboard KPI cards:
-  - Total risks
-  - Active risks
-  - Closed risks
-  - High priority risks (when available via `/stats`)
-- Analytics page using Recharts:
-  - Bar chart (risks by status)
-  - Pie chart (distribution)
-  - Line chart (risks over time)
+## 🚀 Key Features
 
-### Search, Filters, Pagination, Sorting
-- Debounced search (~300ms)
-- Status dropdown filtering
-- Date range filtering (`startDate`, `endDate`)
-- URL query parameter persistence for filters
-- Pagination controls + sort controls
+### 🔐 Authentication & Security
+- Secure login flow with JWT token handling.
+- Protected routes to prevent unauthorized access.
+- **Offline Mode:** Seamless mock login is available when the backend is down.
 
-### Export
-- CSV export from List page
-- Uses backend `GET /export` when available
-- Generates a CSV fallback from currently loaded mock/filtered data when export API fails
+### 📋 Risk Management (CRUD)
+- Complete functionality to **Create, Read, Update, and Delete** risks.
+- Detailed risk view highlighting statuses, priorities, and historical metadata.
+- Built-in safe-delete confirmation dialogs to prevent accidental data loss.
 
-### UX / Reliability
-- Loaders for all API-driven pages
-- Global error handling (ErrorBanner + Toast)
-- Responsive UI (mobile/tablet/desktop)
-- Clean, reusable component architecture (`Card`, `Button`, `Loader`, `EmptyState`, etc.)
+### 🤖 AI Integration (Mock + Ready)
+- Dedicated AI intelligence panel inside the Risk Detail page.
+- Integrates seamlessly with backend endpoints (`POST /describe`, `POST /recommend`).
+- **Offline Mode:** Generates realistic, contextual mock AI responses when the backend is unreachable.
 
-## Routes
-- `/` → Login
-- `/dashboard` → Dashboard
-- `/list` → Risk List
-- `/create` → Create Risk
-- `/edit/:id` → Edit Risk
-- `/detail/:id` → Risk Detail (AI panel)
-- `/analytics` → Analytics
+### 📊 Dashboard & Advanced Analytics
+- **Dashboard KPIs:** Tracks Total Risks, Active Risks, Closed Risks, and High-Priority bottlenecks.
+- **Visual Analytics:** Fully responsive interactive charts powered by **Recharts**:
+  - Bar charts for risks organized by status.
+  - Pie charts for priority distribution.
+  - Time-series line charts tracking risk creation over time.
 
-## Mock Fallback Mode
-API calls use Axios with `http://localhost:8080` as the base URL. If the backend is unreachable, the app automatically falls back to in-memory mock data for:
-- Auth (`POST /auth/login`)
-- Risk list + pagination (`GET /all`)
-- Single risk (`GET /:id`)
-- CRUD (`POST /create`, `PUT /:id`, `DELETE /:id`)
-- Dashboard stats (`GET /stats`)
-- CSV export (`GET /export`)
-- AI endpoints (`POST /describe`, `POST /recommend`)
+### 🔍 Search, Filters, Pagination, & Sorting
+- **Performance Optimized:** Debounced search inputs (~300ms) prevent API spamming.
+- Advanced multi-filter system (Status dropdowns, Date range filtering).
+- **URL Syncing:** Filters persist in the URL query parameters so links can be safely shared.
+- Server-side pagination and column sorting controls.
 
-## Run the Project
-```bash
-npm run dev
-```
+### 📥 Export Capabilities
+- One-click CSV export directly from the Risk List.
+- Connects to `GET /export` endpoint.
+- **Offline Mode:** Dynamically generates a CSV blob from currently loaded local mock data when the API fails.
 
-## Development Timeline 
+### 💅 Premium UX & Reliability
+- Glassmorphism, ultra-modern SaaS UI built with **Tailwind CSS v4**.
+- Highly responsive design perfect for mobile, tablet, and desktop views.
+- Clean component architecture (`Card`, `Button`, `Loader`, `EmptyState`, `Navbar`).
+- Global error handling (Banners and Toasts) ensuring the app never silently fails.
+- `React.memo` and `useCallback` optimizations for buttery-smooth rendering.
 
-### Day 1 – Project Setup
-- Initialized React project using Vite
-- Added Tailwind CSS, Axios, React Router DOM
-- Created initial project structure (pages/components/services/context)
-- Setup routing skeleton (Login + Dashboard base)
+---
 
-### Day 2 – Authentication & API Setup
-- Implemented Login page UI
-- Integrated Axios API layer with JWT token handling
-- Added protected routing (redirect to login if token missing)
+## 🛠️ Tech Stack
 
-### Day 3 – Core CRUD Features
-- Built Risk List UI
-- Connected `GET /all` for risk retrieval
-- Implemented Create Risk page/form
-- Connected `POST /create` and local navigation flow
+- **Framework:** React 18 (via Vite)
+- **Styling:** Tailwind CSS v4
+- **Routing:** React Router DOM v7
+- **HTTP Client:** Axios
+- **Data Visualization:** Recharts
+- **Icons:** Lucide React
 
-### Day 4 – CRUD Enhancement
-- Implemented Edit Risk page (`/edit/:id`)
-- Implemented Delete flow with confirmation
-- Added Risk Detail page (`/detail/:id`)
-- Ensured navigation between List, Create, Edit, Detail
+---
 
-### Day 5 – Dashboard Development
-- Integrated `GET /stats`
-- Built KPI cards:
-  - Total risks
-  - Active risks
-  - Closed risks
-- Improved UI using reusable components
+## 🗺️ Application Routes
 
-### Day 6 – Analytics & Charts
-- Created Analytics page (`/analytics`)
-- Implemented Recharts charts:
-  - Bar chart
-  - Pie chart
-  - Line chart
-- Connected charts to `GET /stats` (mock compatible)
+| Path | Description |
+|---|---|
+| `/` | Login Screen |
+| `/dashboard` | Main KPI Dashboard |
+| `/list` | Searchable Risk Data Table |
+| `/create` | Form to Create a New Risk |
+| `/edit/:id` | Form to Edit an Existing Risk |
+| `/detail/:id` | Detailed View + AI Analysis Panel |
+| `/analytics` | Interactive Data Visualizations |
 
-### Day 7 – AI Integration
-- Added AI panel inside Risk Detail page
-- Implemented calls to:
-  - `POST /describe`
-  - `POST /recommend`
-- Displayed AI-generated description + recommendations
-- Added loader, retry, and error handling (mock compatible)
+---
 
-### Day 8 – Search & Filtering
-- Implemented debounced search on List page (~300ms)
-- Added status dropdown filter
-- Added date range filter
-- Synced filters with URL query params
+## 🛜 The "Mock Fallback" Architecture
+The application is designed to point to an API at `http://localhost:8080`. However, using advanced Axios interceptors, if the backend is unreachable, the app **automatically and instantly intercepts** the failing requests and resolves them using a sophisticated in-memory database of 25+ realistic mock records. This guarantees that demos, UI testing, and offline development never stall.
 
-### Day 9 – Pagination & Sorting
-- Added pagination + page size controls
-- Implemented sorting controls (name, status, date)
-- Wired List requests with API query parameters:
-  - `page`, `size`, `sortBy`, `sortDir`
-- Works in both real backend and mock fallback mode
+---
 
-### Day 10 – Export & Error Handling
-- Added CSV export button on List page
-- Calls `GET /export` and downloads CSV via Blob
-- Implemented graceful fallback CSV generation when export fails
-- Improved loaders and global error handling consistency
+## ⚙️ How to Run Locally
 
-### Day 11 – Stability & Validation
-- Verified full app flow across all routes
-- Improved form validation for Create/Edit
-- Normalized API response handling across mock/real modes
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+2. **Start the Development Server**
+   ```bash
+   npm run dev
+   ```
+3. **Build for Production**
+   ```bash
+   npm run build
+   ```
 
-### Day 12 – Final Testing & Optimization
-- Fixed edge cases and ensured mock + real compatibility
-- Removed debug logs and cleaned up codebase
-- Confirmed build stability (`npm run build`)
+---
+
+## 📅 Development Timeline
+
+### Phase 1: Core Foundation (Days 1–4)
+- Setup Vite + React + Tailwind v4 project architecture.
+- Created Login and secured routing via Context API.
+- Implemented core CRUD functionality (Risk List, Create, Edit, Detail forms).
+
+### Phase 2: Analytics & Intelligence (Days 5–7)
+- Integrated Dashboard KPI statistics.
+- Built interactive Analytics page using Recharts.
+- Added the AI panel for automated Risk descriptions and mitigation recommendations.
+
+### Phase 3: Advanced Data Handling (Days 8–11)
+- Engineered debounced search and complex multi-filtering (Date ranges, Status).
+- Implemented URL Query Param syncing for easily shareable views.
+- Added CSV Export logic with dynamic Blob generation fallbacks.
+
+### Phase 4: Polish & Enterprise Readiness (Days 12–20)
+- **Data Seeding:** Upgraded the mock engine to support 25+ diverse, highly realistic records for meaningful chart rendering.
+- **Performance:** Memoized intensive UI components and callbacks (`React.memo`, `useCallback`).
+- **UI/UX Overhaul:** Completely redesigned the Header into a premium, glassmorphism SaaS navigation bar.
+- **Responsiveness:** Ensured perfect mobile layouts for charts and data tables.
+- **Final Checks:** Strict ESLint passing and verified production builds.
+
+---
+*Developed by Amit Parashuram Nalatawad (Full Stack Developer 3 - Frontend, Campuspe)*

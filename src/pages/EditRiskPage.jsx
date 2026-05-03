@@ -23,12 +23,11 @@ export default function EditRiskPage() {
       try {
         const res = await api.get(`/${id}`)
         if (!mounted) return
-        const data =
-          res?.data?.data ?? res?.data?.content ?? res?.data ?? {}
+        const payload = res?.data?.data || res?.data?.content || res?.data || {}
         setInitial({
-          name: data.name ?? '',
-          description: data.description ?? '',
-          status: data.status ?? '',
+          name: payload.name ?? '',
+          description: payload.description ?? '',
+          status: payload.status ?? '',
         })
       } catch (e) {
         if (!mounted) return

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { api } from '../services/api'
 import ConfirmDialog from '../components/ConfirmDialog'
@@ -71,6 +71,7 @@ export default function RiskListPage() {
   const [searchInput, setSearchInput] = useState(qFromUrl)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSearchInput(qFromUrl)
   }, [qFromUrl])
 
@@ -115,7 +116,8 @@ export default function RiskListPage() {
       try {
         const res = await api.get('/all', { params })
         if (!mounted) return
-        const extracted = extractPaginated(res?.data)
+        const payload = res?.data?.data || res?.data?.content || res?.data || []
+        const extracted = extractPaginated(payload)
         setRisks(Array.isArray(extracted.items) ? extracted.items : [])
         setTotalPages(extracted.totalPages)
       } catch (e) {
@@ -156,6 +158,21 @@ export default function RiskListPage() {
       page: 1,
     })
   }
+
+  const handleView = useCallback((risk) => {
+    const id = getId(risk)
+    if (id) navigate(`/detail/${id}`)
+  }, [navigate])
+
+  const handleEdit = useCallback((risk) => {
+    const id = getId(risk)
+    if (id) navigate(`/edit/${id}`)
+  }, [navigate])
+
+  const handleDeleteRequest = useCallback((risk) => {
+    setRiskToDelete(risk)
+    setDeleteOpen(true)
+  }, [])
 
   async function handleDelete() {
     if (!riskToDelete) return
@@ -347,18 +364,9 @@ export default function RiskListPage() {
         <>
           <RiskTable
             risks={risks}
-            onView={(risk) => {
-              const id = getId(risk)
-              if (id) navigate(`/detail/${id}`)
-            }}
-            onEdit={(risk) => {
-              const id = getId(risk)
-              if (id) navigate(`/edit/${id}`)
-            }}
-            onDelete={(risk) => {
-              setRiskToDelete(risk)
-              setDeleteOpen(true)
-            }}
+            onView={handleView}
+            onEdit={handleEdit}
+            onDelete={handleDeleteRequest}
           />
 
           <PaginationControls

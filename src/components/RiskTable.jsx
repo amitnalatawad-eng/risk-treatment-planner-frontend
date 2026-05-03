@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Eye, Pencil, Trash2 } from 'lucide-react'
 
 function formatDate(value) {
@@ -11,7 +12,7 @@ function formatDate(value) {
   })
 }
 
-export default function RiskTable({ risks, onView, onEdit, onDelete }) {
+const RiskTable = memo(function RiskTable({ risks, onView, onEdit, onDelete }) {
   return (
     <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
       <table className="min-w-full border-collapse text-sm">
@@ -41,25 +42,25 @@ export default function RiskTable({ risks, onView, onEdit, onDelete }) {
                     <button
                       type="button"
                       onClick={() => onView?.(r)}
-                      className="rounded-md border border-[#1B4F8A]/30 bg-white px-3 py-1 text-xs font-semibold text-[#1B4F8A] hover:bg-[#1B4F8A]/10 focus:outline-none focus:ring-2 focus:ring-[#1B4F8A]/20"
+                      className="flex items-center justify-center rounded-md border border-[#1B4F8A]/30 bg-white px-3 py-1 text-xs font-semibold text-[#1B4F8A] hover:bg-[#1B4F8A]/10 focus:outline-none focus:ring-2 focus:ring-[#1B4F8A]/20"
                     >
-                      <Eye className="mr-2 h-3.5 w-3.5" aria-hidden="true" />
+                      <Eye className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
                       View
                     </button>
                     <button
                       type="button"
                       onClick={() => onEdit?.(r)}
-                      className="rounded-md border border-[#1B4F8A]/30 bg-white px-3 py-1 text-xs font-semibold text-[#1B4F8A] hover:bg-[#1B4F8A]/10 focus:outline-none focus:ring-2 focus:ring-[#1B4F8A]/20"
+                      className="flex items-center justify-center rounded-md border border-[#1B4F8A]/30 bg-white px-3 py-1 text-xs font-semibold text-[#1B4F8A] hover:bg-[#1B4F8A]/10 focus:outline-none focus:ring-2 focus:ring-[#1B4F8A]/20"
                     >
-                      <Pencil className="mr-2 h-3.5 w-3.5" aria-hidden="true" />
+                      <Pencil className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
                       Edit
                     </button>
                     <button
                       type="button"
                       onClick={() => onDelete?.(r)}
-                      className="rounded-md bg-red-600 px-3 py-1 text-xs font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500/30"
+                      className="flex items-center justify-center rounded-md bg-red-600 px-3 py-1 text-xs font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500/30"
                     >
-                      <Trash2 className="mr-2 h-3.5 w-3.5" aria-hidden="true" />
+                      <Trash2 className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
                       Delete
                     </button>
                   </div>
@@ -71,5 +72,7 @@ export default function RiskTable({ risks, onView, onEdit, onDelete }) {
       </table>
     </div>
   )
-}
+})
+
+export default RiskTable
 

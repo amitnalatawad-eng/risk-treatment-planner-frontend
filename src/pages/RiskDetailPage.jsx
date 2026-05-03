@@ -35,7 +35,7 @@ export default function RiskDetailPage() {
       try {
         const res = await api.get(`/${id}`)
         if (!mounted) return
-        const payload = res?.data?.data ?? res?.data?.content ?? res?.data ?? {}
+        const payload = res?.data?.data || res?.data?.content || res?.data || {}
         setRisk(payload)
       } catch (e) {
         if (!mounted) return

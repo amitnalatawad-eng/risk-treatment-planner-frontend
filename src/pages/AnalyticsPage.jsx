@@ -103,7 +103,8 @@ export default function AnalyticsPage() {
       try {
         const res = await api.get('/stats')
         if (!mounted) return
-        setStats(res?.data?.data ?? res?.data?.content ?? res?.data ?? {})
+        const payload = res?.data?.data || res?.data?.content || res?.data || {}
+        setStats(payload)
       } catch (e) {
         if (!mounted) return
         const message =
@@ -158,7 +159,8 @@ export default function AnalyticsPage() {
               {statusCounts.length ? 'Bar chart' : 'No status data'}
             </div>
           </div>
-          <div className="mt-4 h-72">
+          <div className="mt-4 overflow-x-auto">
+            <div className="h-72 min-w-[500px]">
             {statusCounts.length ? (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={statusCounts}>
@@ -177,6 +179,7 @@ export default function AnalyticsPage() {
             ) : (
               <div className="mt-10 text-sm text-gray-600">No data available for the bar chart.</div>
             )}
+            </div>
           </div>
         </div>
 
@@ -185,7 +188,8 @@ export default function AnalyticsPage() {
             <PieChartIcon className="h-5 w-5" aria-hidden="true" />
             Distribution
           </h2>
-          <div className="mt-4 h-72">
+          <div className="mt-4 overflow-x-auto">
+            <div className="h-72 min-w-[300px]">
             {pieData.length ? (
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -207,6 +211,7 @@ export default function AnalyticsPage() {
             ) : (
               <div className="mt-10 text-sm text-gray-600">No distribution data available.</div>
             )}
+            </div>
           </div>
         </div>
       </div>
@@ -221,7 +226,8 @@ export default function AnalyticsPage() {
             {overTime.length ? 'Line chart' : 'No time-series data'}
           </div>
         </div>
-        <div className="mt-4 h-72">
+        <div className="mt-4 overflow-x-auto">
+          <div className="h-72 min-w-[500px]">
           {overTime.length ? (
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={overTime.map((p) => ({ ...p, label: formatShortDate(p.date) }))}>
@@ -236,6 +242,7 @@ export default function AnalyticsPage() {
           ) : (
             <div className="mt-10 text-sm text-gray-600">No time-series data available from the backend.</div>
           )}
+          </div>
         </div>
       </div>
     </div>

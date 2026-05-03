@@ -1,13 +1,13 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import { BarChart3, LayoutDashboard, List, LogOut, Plus } from 'lucide-react'
+import { Activity, BarChart3, LayoutDashboard, List, LogOut, Plus } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
 const linkClasses = ({ isActive }) =>
   [
-    'rounded-md px-3 py-2 text-sm font-medium transition-colors',
+    'flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-md transition duration-200 hover:scale-105 min-w-[72px]',
     isActive
-      ? 'bg-white/20 text-white'
-      : 'text-white/90 hover:bg-white/15 hover:text-white',
+      ? 'bg-white/20 font-semibold text-white shadow-sm'
+      : 'text-blue-50 hover:bg-white/10 hover:text-yellow-300',
   ].join(' ')
 
 export default function Navbar() {
@@ -20,46 +20,59 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-10 border-b bg-gradient-to-r from-[#1B4F8A] to-[#163f6f] backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/15">
-            <LayoutDashboard className="h-5 w-5 text-white" aria-hidden="true" />
-          </div>
-          <div className="leading-tight">
-            <div className="text-sm font-semibold text-white">
-              Risk Treatment Planner
-            </div>
-            <div className="text-xs text-white/75">Plan, track, and analyze risks</div>
-          </div>
+    <header className="sticky top-0 z-50 flex w-full flex-wrap items-center justify-between gap-4 bg-gradient-to-r from-[#1B4F8A] via-blue-700 to-blue-500 px-6 py-3 shadow-lg backdrop-blur-md md:min-h-16 md:py-2">
+      
+      {/* LEFT SECTION (LOGO + TITLE) */}
+      <div className="flex items-center gap-2 group cursor-pointer transition-transform duration-200 hover:scale-105">
+        <div className="flex items-center justify-center rounded-lg bg-white/20 p-1.5 backdrop-blur-sm">
+          <Activity className="h-5 w-5 text-white" aria-hidden="true" />
+        </div>
+        <div className="flex flex-col leading-none">
+          <span className="text-xl font-bold tracking-wide text-white drop-shadow-sm hidden sm:block">
+            Risk Planner
+          </span>
+          <span className="mt-0.5 text-xs font-medium text-blue-100 hidden sm:block">
+            Enterprise Dashboard
+          </span>
+        </div>
+      </div>
+
+      {/* NAV LINKS (CENTER OR RIGHT) */}
+      <nav className="flex flex-1 flex-wrap items-center justify-center gap-2 md:gap-4">
+        <NavLink to="/dashboard" className={linkClasses}>
+          <LayoutDashboard className="h-5 w-5" aria-hidden="true" />
+          <span className="text-[10px] md:text-xs">Dashboard</span>
+        </NavLink>
+        <NavLink to="/list" className={linkClasses}>
+          <List className="h-5 w-5" aria-hidden="true" />
+          <span className="text-[10px] md:text-xs">List</span>
+        </NavLink>
+        <NavLink to="/create" className={linkClasses}>
+          <Plus className="h-5 w-5" aria-hidden="true" />
+          <span className="text-[10px] md:text-xs">Create</span>
+        </NavLink>
+        <NavLink to="/analytics" className={linkClasses}>
+          <BarChart3 className="h-5 w-5" aria-hidden="true" />
+          <span className="text-[10px] md:text-xs">Analytics</span>
+        </NavLink>
+      </nav>
+
+      {/* RIGHT SECTION (AVATAR + LOGOUT) */}
+      <div className="flex items-center gap-4">
+        {/* User Avatar */}
+        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-blue-600/50 text-sm font-bold text-white shadow-sm transition-transform duration-200 hover:scale-105 cursor-pointer hidden sm:flex">
+          AD
         </div>
 
-        <nav className="flex items-center gap-1 overflow-x-auto">
-          <NavLink to="/dashboard" className={linkClasses}>
-            <LayoutDashboard className="mr-2 h-4 w-4" aria-hidden="true" />
-            Dashboard
-          </NavLink>
-          <NavLink to="/list" className={linkClasses}>
-            <List className="mr-2 h-4 w-4" aria-hidden="true" />
-            List
-          </NavLink>
-          <NavLink to="/create" className={linkClasses}>
-            <Plus className="mr-2 h-4 w-4" aria-hidden="true" />
-            Create
-          </NavLink>
-          <NavLink to="/analytics" className={linkClasses}>
-            <BarChart3 className="mr-2 h-4 w-4" aria-hidden="true" />
-            Analytics
-          </NavLink>
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="ml-2 inline-flex items-center gap-2 rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500/30"
-          >
-            <LogOut className="h-4 w-4" aria-hidden="true" />
-            Logout
-          </button>
-        </nav>
+        {/* Logout Button */}
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="flex items-center gap-1.5 rounded-md bg-red-500 px-3 py-1.5 text-sm font-medium text-white shadow-md transition-all duration-200 hover:scale-105 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
+        >
+          <LogOut className="h-4 w-4" aria-hidden="true" />
+          <span>Logout</span>
+        </button>
       </div>
     </header>
   )
