@@ -101,11 +101,11 @@ export default function RiskDetailPage() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
           <button
             type="button"
             onClick={() => navigate(`/edit/${id}`)}
-            className="rounded-md border border-[#1B4F8A]/25 bg-white px-4 py-2 text-sm font-semibold text-[#1B4F8A] hover:bg-[#1B4F8A]/5 focus:outline-none focus:ring-2 focus:ring-[#1B4F8A]/20"
+            className="w-full sm:w-auto rounded-md border border-[#1B4F8A]/25 bg-white px-4 py-2 text-sm font-semibold text-[#1B4F8A] hover:bg-[#1B4F8A]/5 focus:outline-none focus:ring-2 focus:ring-[#1B4F8A]/20"
           >
             <Pencil className="mr-2 inline h-4 w-4" aria-hidden="true" />
             Edit
@@ -113,7 +113,7 @@ export default function RiskDetailPage() {
           <button
             type="button"
             onClick={() => setDeleteOpen(true)}
-            className="rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500/30"
+            className="w-full sm:w-auto rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500/30"
           >
             <Trash2 className="mr-2 inline h-4 w-4" aria-hidden="true" />
             Delete

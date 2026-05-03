@@ -53,7 +53,7 @@ export default function RiskForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-5">
       <div>
         <label className="mb-1 block text-sm font-medium text-gray-700">
           Name
@@ -101,11 +101,11 @@ export default function RiskForm({
         ) : null}
       </div>
 
-      <div className="flex justify-end gap-2">
+      <div className="flex flex-col sm:flex-row justify-end gap-2 mt-2">
         <button
           type="submit"
           disabled={submitting}
-          className="rounded-md bg-[#1B4F8A] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#163f6f] disabled:opacity-60"
+          className="w-full sm:w-auto rounded-md bg-[#1B4F8A] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#163f6f] disabled:opacity-60"
         >
           <Save className="mr-2 h-4 w-4" aria-hidden="true" />
           {submitting ? 'Saving…' : submitLabel}

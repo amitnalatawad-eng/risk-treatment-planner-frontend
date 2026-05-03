@@ -60,7 +60,7 @@ A modern, enterprise-grade, AI-powered risk management web application built usi
 
 ### 💅 Premium UX & Reliability
 - Glassmorphism, ultra-modern SaaS UI built with **Tailwind CSS v4**.
-- Highly responsive design perfect for mobile, tablet, and desktop views.
+- **Fully Responsive Design:** Pixel-perfect layouts for Mobile (375px), Tablet (768px), and Desktop (1280px) devices.
 - Clean component architecture (`Card`, `Button`, `Loader`, `EmptyState`, `Navbar`).
 - Global error handling (Banners and Toasts) ensuring the app never silently fails.
 - `React.memo` and `useCallback` optimizations for buttery-smooth rendering.

@@ -160,7 +160,7 @@ export default function AnalyticsPage() {
             </div>
           </div>
           <div className="mt-4 overflow-x-auto">
-            <div className="h-72 min-w-[500px]">
+            <div className="h-72 min-w-[300px]">
             {statusCounts.length ? (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={statusCounts}>
@@ -227,7 +227,7 @@ export default function AnalyticsPage() {
           </div>
         </div>
         <div className="mt-4 overflow-x-auto">
-          <div className="h-72 min-w-[500px]">
+          <div className="h-72 min-w-[300px]">
           {overTime.length ? (
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={overTime.map((p) => ({ ...p, label: formatShortDate(p.date) }))}>

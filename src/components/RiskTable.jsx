@@ -15,13 +15,13 @@ function formatDate(value) {
 const RiskTable = memo(function RiskTable({ risks, onView, onEdit, onDelete }) {
   return (
     <div className="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-sm">
-      <table className="min-w-full border-collapse text-sm">
+      <table className="min-w-full border-collapse text-xs sm:text-sm">
         <thead className="bg-[#1B4F8A]/5">
           <tr className="text-left text-gray-600">
-            <th className="px-4 py-3 font-medium">Name</th>
-            <th className="px-4 py-3 font-medium">Status</th>
-            <th className="px-4 py-3 font-medium">Date</th>
-            <th className="px-4 py-3 font-medium">Actions</th>
+            <th className="p-2 sm:px-4 sm:py-3 font-medium">Name</th>
+            <th className="p-2 sm:px-4 sm:py-3 font-medium">Status</th>
+            <th className="p-2 sm:px-4 sm:py-3 font-medium">Date</th>
+            <th className="p-2 sm:px-4 sm:py-3 font-medium">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -32,12 +32,12 @@ const RiskTable = memo(function RiskTable({ risks, onView, onEdit, onDelete }) {
                 key={r.id ?? r._id ?? r.riskId}
                 className="border-t border-gray-100 odd:bg-white even:bg-gray-50 hover:bg-[#1B4F8A]/5 transition-colors"
               >
-                <td className="px-4 py-3 font-medium text-gray-900">
+                <td className="p-2 sm:px-4 sm:py-3 font-medium text-gray-900">
                   {r.name ?? 'Untitled'}
                 </td>
-                <td className="px-4 py-3 text-gray-700">{r.status ?? '—'}</td>
-                <td className="px-4 py-3 text-gray-600">{formatDate(dateValue)}</td>
-                <td className="px-4 py-3">
+                <td className="p-2 sm:px-4 sm:py-3 text-gray-700">{r.status ?? '—'}</td>
+                <td className="p-2 sm:px-4 sm:py-3 text-gray-600">{formatDate(dateValue)}</td>
+                <td className="p-2 sm:px-4 sm:py-3">
                   <div className="flex flex-wrap items-center gap-2">
                     <button
                       type="button"

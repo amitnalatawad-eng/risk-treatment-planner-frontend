@@ -91,7 +91,7 @@ export default function DashboardPage() {
         </p>
       </div>
 
-      <div className={`grid gap-4 ${showHigh ? 'md:grid-cols-4' : 'md:grid-cols-3'}`}>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
