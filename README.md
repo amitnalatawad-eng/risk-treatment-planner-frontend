@@ -6,17 +6,20 @@ A modern, enterprise-grade, AI-powered risk management web application built usi
 
 ## 📸 Screenshots
 
-*(Add your screenshots here by placing images in a `/screenshots` folder and uncommenting the lines below)*
+### Login Page
+![Login Page](Screenshots/login_page.png)
 
-<!--
-| Dashboard Overview | Risk List & Filtering |
-| :---: | :---: |
-| ![Dashboard](./screenshots/dashboard.png) | ![Risk List](./screenshots/list.png) |
+### Dashboard Overview
+![Dashboard Overview](Screenshots/Dashboard_page.png)
 
-| AI-Powered Details | Real-time Analytics |
-| :---: | :---: |
-| ![AI Detail](./screenshots/ai-detail.png) | ![Analytics](./screenshots/analytics.png) |
--->
+### Risk List
+![Risk List](Screenshots/List_page.png)
+
+### Create Risk
+![Create Risk](Screenshots/create_page.png)
+
+### Analytics Page
+![Analytics Page](Screenshots/Analytic_page.png)
 
 ---
 
